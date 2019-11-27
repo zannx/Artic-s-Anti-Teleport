@@ -85,14 +85,16 @@ game:GetService("Players").PlayerAdded:Connect(function(player)
 			  Counter.Value = Counter.Value + 1
 			 if Counter.Value >= MaxCounterValue then -- if server caughts are higher or equal to our variable go next
 				if (Counter.Value/Timer.Value) <= 50 then -- if caughts devided by in game time is lower or equal to 50% go next
+				   if character:FindFirstChild("Humanoid").FloorMaterial ~= Enum.Material.Air then -- Prevent roblox physics flungs
 				 warn("Player: "..player.Name.."was caught teleporting")
 				 script[player.Name.."Position"]:Destroy()
 				 player:kick("Player: "..player.Name.. " was caught exploiting")
 				 break
 				else
 					Counter.Value = 0 -- if caughts devided by in game time is not lower or equals to 50% set caughts to 0
+				   end
 				end
-			  end     
+			 end     
 		   end
 		   if message == "PartExists" then	-- if Part exists
 			local LocalPositionBefore = character:FindFirstChild("Part").Position --Get part position before
@@ -105,6 +107,7 @@ game:GetService("Players").PlayerAdded:Connect(function(player)
 			   Counter.Value = Counter.Value + 1
 			  if Counter.Value >= MaxCounterValue then -- if server caughts are higher or equal to our variable go next
 				 if (Counter.Value/Timer.Value) <= 50 then -- if caughts devided by in game time is lower or equal to 50% go next
+				   if character:FindFirstChild("Humanoid").FloorMaterial ~= Enum.Material.Air then -- Prevent roblox physics flungs
 				   warn("Player: "..player.Name.."was caught teleporting")
 				   script[player.Name.."Position"]:Destroy()
 				   player:kick("Player: "..player.Name.. " was caught exploiting")
@@ -112,6 +115,7 @@ game:GetService("Players").PlayerAdded:Connect(function(player)
 				 else
 					Counter.Value = 0 -- if caughts devided by in game time is not lower or equals to 50% set caughts to 0
 				end
+			   end
 			  end     
 		     end
 		   end
